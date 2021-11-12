@@ -68,12 +68,7 @@ type Projet implements Node {
         sortBy: String = "date"
     ): NodeBelongsTo
     content: String
-    date(
-        "Date format"
-        format: String,
-        "Locale"
-        locale: String
-    ): Date
+    date: String
     excerpt(
         "Maximum length of generated excerpt (characters)"
         length: Int = 200
@@ -183,31 +178,6 @@ input BelongsToFilterInput {
     typeName: TypeNameQueryOperatorInput
 }
 
-input DateQueryOperatorInput {
-    "Filter by property between provided values."
-    between: [Date]
-    "Filter by date property equal to provided date value."
-    dteq: Date
-    "Filter by property of (strict) equality."
-    eq: Date
-    "Filter nodes that contain the field, including nodes where the field value is null."
-    exists: Boolean
-    "Filter by property greater than provided value."
-    gt: Date
-    "Filter by property greater or equal to provided value."
-    gte: Date
-    "Filter by property matching any of the provided values."
-    in: [Date]
-    "Filter by property less than provided value."
-    lt: Date
-    "Filter by property less than or equal to provided value."
-    lte: Date
-    "Filter by property not equal to provided value."
-    ne: Date
-    "Filter by property not matching any of the provided values."
-    nin: [Date]
-}
-
 input IDQueryOperatorInput {
     "Filter by property of (strict) equality."
     eq: ID
@@ -243,7 +213,7 @@ input PageFilterInput {
 
 input ProjetFilterInput {
     content: StringQueryOperatorInput
-    date: DateQueryOperatorInput
+    date: StringQueryOperatorInput
     excerpt: StringQueryOperatorInput
     fileInfo: Projet_FileInfoFilterInput
     id: IDQueryOperatorInput
@@ -305,10 +275,10 @@ input TypeNameQueryOperatorInput {
 }
 
 
-scalar Date
-
 "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
 scalar JSON
+
+scalar Date
 
 scalar File
 
